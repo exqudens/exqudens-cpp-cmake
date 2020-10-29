@@ -13,7 +13,7 @@ namespace exqudens::cpp::cmake::util {
 
   class Strings {
     public:
-      static vector<pair<int, string>> diff(string string1, string string2) {
+      static vector<pair<int, string>> diff(string string1, string string2, bool includeEqual) {
         int string1Size;
         int string2Size;
         int string1MaxIndex;
@@ -46,55 +46,63 @@ namespace exqudens::cpp::cmake::util {
           vectorMaxIndex = vectorSize - 1;
 
           if (string1ContainsIndex && string2ContainsIndex) {
-            if (char1 == char2) {
-              if (vectorMaxIndex >= 0) {
-                if (0 == vector.at(vectorMaxIndex).first) {
-                  vector.at(vectorMaxIndex).second.append(1, char1);
-                } else {
-                  vector.push_back(make_pair(0, string(1, char1)));
-                }
+            if (char1 == char2 && includeEqual) {
+
+              if (
+                  vectorMaxIndex >= 0
+                  && 0 == vector.at(vectorMaxIndex).first
+              ) {
+                vector.at(vectorMaxIndex).second.append(1, char1);
               } else {
                 vector.push_back(make_pair(0, string(1, char1)));
               }
-            } else {
-              if (vectorMaxIndex >= 1) {
-                if (1 == vector.at(vectorMaxIndex - 1).first && 2 == vector.at(vectorMaxIndex).first) {
-                  vector.at(vectorMaxIndex - 1).second.append(1, char1);
-                  vector.at(vectorMaxIndex).second.append(1, char2);
-                } else {
-                  vector.push_back(make_pair(1, string(1, char1)));
-                  vector.push_back(make_pair(2, string(1, char2)));
-                }
+
+            } else if (char1 != char2) {
+
+              if (
+                  vectorMaxIndex >= 1
+                  && 1 == vector.at(vectorMaxIndex - 1).first
+                  && 2 == vector.at(vectorMaxIndex).first
+              ) {
+                vector.at(vectorMaxIndex - 1).second.append(1, char1);
+                vector.at(vectorMaxIndex).second.append(1, char2);
               } else {
                 vector.push_back(make_pair(1, string(1, char1)));
                 vector.push_back(make_pair(2, string(1, char2)));
               }
+
             }
           } else if (string1ContainsIndex) {
-            if (vectorMaxIndex >= 0) {
-              if (1 == vector.at(vectorMaxIndex).first) {
-                vector.at(vectorMaxIndex).second.append(1, char1);
-              } else {
-                vector.push_back(make_pair(1, string(1, char1)));
-              }
+
+            if (
+                vectorMaxIndex >= 0
+                && 1 == vector.at(vectorMaxIndex).first
+            ) {
+              vector.at(vectorMaxIndex).second.append(1, char1);
             } else {
               vector.push_back(make_pair(1, string(1, char1)));
             }
+
           } else if (string2ContainsIndex) {
-            if (vectorMaxIndex >= 0) {
-              if (2 == vector.at(vectorMaxIndex).first) {
-                vector.at(vectorMaxIndex).second.append(1, char2);
-              } else {
-                vector.push_back(make_pair(2, string(1, char2)));
-              }
+
+            if (
+                vectorMaxIndex >= 0
+                && 2 == vector.at(vectorMaxIndex).first
+            ) {
+              vector.at(vectorMaxIndex).second.append(1, char2);
             } else {
               vector.push_back(make_pair(2, string(1, char2)));
             }
+
           }
 
         }
 
         return vector;
+      }
+
+      static vector<pair<int, string>> diff(string string1, string string2) {
+        return diff(string1, string2, false);
       }
   };
 

@@ -16,10 +16,10 @@ add_library(Strings src/main/cpp/exqudens/cpp/cmake/util/Strings.cpp)
 
 add_subdirectory(src/main/cpp/exqudens/cpp/cmake/test/strings)
 
-add_executable(${CMAKE_PROJECT_NAME}TestStrings src/main/cpp/exqudens/cpp/cmake/test/strings/main.cpp)
+add_executable(${CMAKE_PROJECT_NAME}StringsTest src/main/cpp/exqudens/cpp/cmake/test/strings/main.cpp)
 
 target_link_libraries(
-        ${CMAKE_PROJECT_NAME}TestStrings
+        ${CMAKE_PROJECT_NAME}StringsTest
         PUBLIC
         Strings
 )
