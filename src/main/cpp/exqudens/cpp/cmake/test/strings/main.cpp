@@ -11,110 +11,129 @@ using std::pair;
 using std::make_pair;
 using exqudens::cpp::cmake::util::Strings;
 
-void test1() {
-  string string1 = "ABCDEFJ";
-  string string2 = "ABCYZFJ";
+void test01() {
+  string header = string(10, '=').append(" ").append(__FUNCTION__).append(" ").append(10, '=');
+  string passed = "PASSED";
+  string failed = "FAILED";
+  cout << header << endl;
 
-  cout << "===" << endl;
-  cout << "string1: " << string1 << endl;
-  cout << "string2: " << string2 << endl;
-  cout << "---" << endl;
+  string part1 = "ABC";
+  string part2 = "DE";
+  string part3 = "YZ";
+  string part4 = "FJ";
+
+  string string1 = part1 + part2 + part4;
+  string string2 = part1 + part3 + part4;
   vector<pair<int, string>> vector = Strings::diff(string1, string2);
-  for (int i = 0; i < vector.size(); i++) {
-    string operation;
 
-    if (0 == vector.at(i).first) {
-      operation = "EQUAL";
-    } else if (1 == vector.at(i).first) {
-      operation = "DELETE";
-    } else if (2 == vector.at(i).first) {
-      operation = "INSERT";
-    }
-
-    cout << operation << ": " << vector.at(i).second << endl;
+  if (
+      4 == vector.size()
+      && 0 == vector.at(0).first
+      && 1 == vector.at(1).first
+      && 2 == vector.at(2).first
+      && 0 == vector.at(3).first
+      && part1 == vector.at(0).second
+      && part2 == vector.at(1).second
+      && part3 == vector.at(2).second
+      && part4 == vector.at(3).second
+  ) {
+    cout << passed << endl;
+  } else {
+    cout << failed << endl;
+    cout << string(header.size(), '-') << endl;
+    cout << "string1: " << string1 << endl;
+    cout << "string2: " << string2 << endl;
   }
-  cout << "===" << endl;
+
+  cout << string(header.size(), '=') << endl;
 }
 
-void test2() {
+void test02() {
+  string header = string(10, '=').append(" ").append(__FUNCTION__).append(" ").append(10, '=');
+  string passed = "PASSED";
+  string failed = "FAILED";
+  cout << header << endl;
+
   string string1 = "";
   string string2 = "ABCYZFJ";
-
-  cout << "===" << endl;
-  cout << "string1: " << string1 << endl;
-  cout << "string2: " << string2 << endl;
-  cout << "---" << endl;
   vector<pair<int, string>> vector = Strings::diff(string1, string2);
-  for (int i = 0; i < vector.size(); i++) {
-    string operation;
 
-    if (0 == vector.at(i).first) {
-      operation = "EQUAL";
-    } else if (1 == vector.at(i).first) {
-      operation = "DELETE";
-    } else if (2 == vector.at(i).first) {
-      operation = "INSERT";
-    }
-
-    cout << operation << ": " << vector.at(i).second << endl;
+  if (
+      1 == vector.size()
+      && 2 == vector.at(0).first
+      && string2 == vector.at(0).second
+      ) {
+    cout << passed << endl;
+  } else {
+    cout << failed << endl;
+    cout << string(header.size(), '-') << endl;
+    cout << "string1: " << string1 << endl;
+    cout << "string2: " << string2 << endl;
   }
-  cout << "===" << endl;
+
+  cout << string(header.size(), '=') << endl;
 }
 
-void test3() {
+void test03() {
+  string header = string(10, '=').append(" ").append(__FUNCTION__).append(" ").append(10, '=');
+  string passed = "PASSED";
+  string failed = "FAILED";
+  cout << header << endl;
+
   string string1 = "ABCYZFJ";
   string string2 = "";
-
-  cout << "===" << endl;
-  cout << "string1: " << string1 << endl;
-  cout << "string2: " << string2 << endl;
-  cout << "---" << endl;
   vector<pair<int, string>> vector = Strings::diff(string1, string2);
-  for (int i = 0; i < vector.size(); i++) {
-    string operation;
 
-    if (0 == vector.at(i).first) {
-      operation = "EQUAL";
-    } else if (1 == vector.at(i).first) {
-      operation = "DELETE";
-    } else if (2 == vector.at(i).first) {
-      operation = "INSERT";
-    }
-
-    cout << operation << ": " << vector.at(i).second << endl;
+  if (
+      1 == vector.size()
+      && 1 == vector.at(0).first
+      && string1 == vector.at(0).second
+      ) {
+    cout << passed << endl;
+  } else {
+    cout << failed << endl;
+    cout << string(header.size(), '-') << endl;
+    cout << "string1: " << string1 << endl;
+    cout << "string2: " << string2 << endl;
   }
-  cout << "===" << endl;
+
+  cout << string(header.size(), '=') << endl;
 }
 
-void test4() {
-  string string1 = "ABCYZFJ";
-  string string2 = "ABCYZFJ---111";
+void test04() {
+  string header = string(10, '=').append(" ").append(__FUNCTION__).append(" ").append(10, '=');
+  string passed = "PASSED";
+  string failed = "FAILED";
+  cout << header << endl;
 
-  cout << "===" << endl;
-  cout << "string1: " << string1 << endl;
-  cout << "string2: " << string2 << endl;
-  cout << "---" << endl;
+  string part1 = "ABCYZFJ";
+  string part2 = "---111";
+  string string1 = part1;
+  string string2 = part1 + part2;
   vector<pair<int, string>> vector = Strings::diff(string1, string2);
-  for (int i = 0; i < vector.size(); i++) {
-    string operation;
 
-    if (0 == vector.at(i).first) {
-      operation = "EQUAL";
-    } else if (1 == vector.at(i).first) {
-      operation = "DELETE";
-    } else if (2 == vector.at(i).first) {
-      operation = "INSERT";
-    }
-
-    cout << operation << ": " << vector.at(i).second << endl;
+  if (
+      2 == vector.size()
+      && 0 == vector.at(0).first
+      && 2 == vector.at(1).first
+      && string1 == vector.at(0).second
+      && part2 == vector.at(1).second
+  ) {
+    cout << passed << endl;
+  } else {
+    cout << failed << endl;
+    cout << string(header.size(), '-') << endl;
+    cout << "string1: " << string1 << endl;
+    cout << "string2: " << string2 << endl;
   }
-  cout << "===" << endl;
+
+  cout << string(header.size(), '=') << endl;
 }
 
 int main() {
-  //test1();
-  //test2();
-  //test3();
-  test4();
+  test01();
+  test02();
+  test03();
+  test04();
   return 0;
 }
