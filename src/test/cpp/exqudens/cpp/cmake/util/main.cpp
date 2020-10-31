@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "../../util/Strings.cpp"
+#include "../../../../../../main/cpp/exqudens/cpp/cmake/util/Strings.cpp"
 
 using std::cout;
 using std::endl;
