@@ -4,22 +4,23 @@ project(ExqudensCPPCmake)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# main
+#--- download example ---
 
-add_subdirectory(src/main/cpp/exqudens/cpp/cmake/util)
+#set(MY_URL "https://raw.githubusercontent.com/exqudens/exqudens-c-study-project-a-grade/master/src/main/cpp/application/model/IntArray.h")
+##set(MY_URL "file:///C:/exqudens/cpp/exqudens-c-study-project-a-grade/src/main/cpp/application/model/IntArray.h")
+##set(MY_DOWNLOAD_PATH "${PROJECT_SOURCE_DIR}/src/main/cpp/IntArray.h")
 
-add_library(Strings src/main/cpp/exqudens/cpp/cmake/util/Strings.cpp)
+##if (NOT EXISTS "${MY_DOWNLOAD_PATH}")
+    ##file(DOWNLOAD "${MY_URL}" "${MY_DOWNLOAD_PATH}")
+##endif()
 
-#add_executable(${CMAKE_PROJECT_NAME} main.cpp)
+#------------------------
 
-# test
+set(SOURCE_FILES
+        src/main/cpp/exqudens/strings.hpp)
 
-add_subdirectory(src/test/cpp/exqudens/cpp/cmake/util)
+set(TEST_FILES
+        ${SOURCE_FILES}
+        src/test/cpp/main.cpp)
 
-add_executable(${CMAKE_PROJECT_NAME}StringsTest src/test/cpp/exqudens/cpp/cmake/util/main.cpp)
-
-target_link_libraries(
-        ${CMAKE_PROJECT_NAME}StringsTest
-        PUBLIC
-        Strings
-)
+add_executable(${CMAKE_PROJECT_NAME}Test ${TEST_FILES})

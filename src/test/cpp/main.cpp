@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "../../../../../../main/cpp/exqudens/cpp/cmake/util/Strings.cpp"
+#include "../../main/cpp/exqudens/strings.hpp"
 
 using std::cout;
 using std::endl;
@@ -10,7 +10,7 @@ using std::string;
 using std::vector;
 using std::pair;
 using std::make_pair;
-using exqudens::cpp::cmake::util::Strings;
+using exqudens::strings;
 
 bool test01() {
   bool result = false;
@@ -26,7 +26,7 @@ bool test01() {
 
   string string1 = part1 + part2 + part4;
   string string2 = part1 + part3 + part4;
-  vector<pair<int, string>> vector = Strings::diff(string1, string2, true);
+  vector<pair<int, string>> vector = strings::diff(string1, string2, true);
 
   if (
       4 == vector.size()
@@ -64,7 +64,7 @@ bool test02() {
   string part2 = "---111";
   string string1 = part1;
   string string2 = part1 + part2;
-  vector<pair<int, string>> vector = Strings::diff(string1, string2, true);
+  vector<pair<int, string>> vector = strings::diff(string1, string2, true);
 
   if (
       2 == vector.size()
@@ -101,7 +101,7 @@ bool test03() {
 
   string string1 = part1 + part2 + part4;
   string string2 = part1 + part3 + part4;
-  vector<pair<int, string>> vector = Strings::diff(string1, string2);
+  vector<pair<int, string>> vector = strings::diff(string1, string2);
 
   if (
       2 == vector.size()
@@ -135,7 +135,7 @@ bool test04() {
   string part2 = "---111";
   string string1 = part1;
   string string2 = part1 + part2;
-  vector<pair<int, string>> vector = Strings::diff(string1, string2);
+  vector<pair<int, string>> vector = strings::diff(string1, string2);
 
   if (
       1 == vector.size()
@@ -165,7 +165,7 @@ bool test05() {
 
   string string1 = "";
   string string2 = "ABCYZFJ";
-  vector<pair<int, string>> vector = Strings::diff(string1, string2);
+  vector<pair<int, string>> vector = strings::diff(string1, string2);
 
   if (
       1 == vector.size()
@@ -195,7 +195,7 @@ bool test06() {
 
   string string1 = "ABCYZFJ";
   string string2 = "";
-  vector<pair<int, string>> vector = Strings::diff(string1, string2);
+  vector<pair<int, string>> vector = strings::diff(string1, string2);
 
   if (
       1 == vector.size()

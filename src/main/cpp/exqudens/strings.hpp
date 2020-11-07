@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-namespace exqudens::cpp::cmake::util {
+namespace exqudens {
 
   using std::string;
   using std::pair;
   using std::make_pair;
   using std::vector;
 
-  class Strings {
+  class strings {
     public:
       static vector<pair<int, string>> diff(string string1, string string2, bool includeEqual) {
         int string1Size;
