@@ -16,11 +16,40 @@ set(CMAKE_CXX_STANDARD 20)
 
 #------------------------
 
-set(SOURCE_FILES
-        src/main/cpp/exqudens/strings.hpp)
+set(
+        SOURCE_FILES
+        src/main/cpp/exqudens/strings.hpp
+)
 
-set(TEST_FILES
+set(
+        TEST_FILES
         ${SOURCE_FILES}
-        src/test/cpp/main.cpp)
+        src/test/cpp/tests.hpp
+        src/test/cpp/tests.cpp
+        src/test/cpp/test_1.hpp
+        src/test/cpp/test_2.hpp
+)
 
-add_executable(${CMAKE_PROJECT_NAME}Test ${TEST_FILES})
+add_executable(
+        ${CMAKE_PROJECT_NAME}RunAllTests
+        ${SOURCE_FILES}
+        ${TEST_FILES}
+        src/test/cpp/run_all_tests.cpp
+)
+
+enable_testing()
+
+add_executable(
+        ${CMAKE_PROJECT_NAME}RunTests
+        ${TEST_FILES}
+        src/test/cpp/run_tests.cpp
+)
+
+add_test(NAME test_1_run COMMAND ${CMAKE_PROJECT_NAME}RunTests test_1_run)
+add_test(NAME test_2_run COMMAND ${CMAKE_PROJECT_NAME}RunTests test_2_run)
+
+add_custom_command(
+        TARGET ${CMAKE_PROJECT_NAME}RunTests
+        POST_BUILD
+        COMMAND ctest -C $<CONFIGURATION> --output-on-failure
+)
