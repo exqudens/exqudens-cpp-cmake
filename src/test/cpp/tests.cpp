@@ -1,5 +1,5 @@
-#include "tests.hpp"
-#include "exqudens/test_strings.hpp"
+#include "../../main/cpp/exqudens/tests.hpp"
+#include "exqudens/strings/test_strings.hpp"
 
 using std::string;
 using std::map;

@@ -1,5 +1,5 @@
-#ifndef STRINGS_CPP
-#define STRINGS_CPP
+#ifndef EXQUDENS_STRINGS_CPP
+#define EXQUDENS_STRINGS_CPP
 
 #include <string>
 #include <vector>
@@ -108,4 +108,4 @@ namespace exqudens {
 
 }
 
-#endif
+#endif // EXQUDENS_STRINGS_CPP

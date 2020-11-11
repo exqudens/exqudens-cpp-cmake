@@ -40,32 +40,36 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(
         SOURCE_FILES
+        src/main/cpp/exqudens/tests.hpp
+        src/main/cpp/exqudens/assertions.hpp
         src/main/cpp/exqudens/strings.hpp
 )
 
 set(
         TEST_FILES
         ${SOURCE_FILES}
-        src/test/cpp/tests.hpp
         src/test/cpp/tests.cpp
-        src/test/cpp/assertions.hpp
-        src/test/cpp/exqudens/test_strings.hpp
-)
-
-add_executable(
-        ${CMAKE_PROJECT_NAME}RunAllTests
-        ${SOURCE_FILES}
-        ${TEST_FILES}
-        src/test/cpp/run_all_tests.cpp
+        src/test/cpp/exqudens/assertions/test_assertions.hpp
+        src/test/cpp/exqudens/strings/test_strings.hpp
 )
 
 enable_testing()
+
+add_executable(
+        ${CMAKE_PROJECT_NAME}TestTests
+        ${SOURCE_FILES}
+        src/test/cpp/exqudens/tests/test_implementation_tests.hpp
+        src/test/cpp/exqudens/tests/test_tests.cpp
+)
 
 add_executable(
         ${CMAKE_PROJECT_NAME}RunTests
         ${TEST_FILES}
         src/test/cpp/run_tests.cpp
 )
+
+add_test(exqudens_test_tests_test_1 ${CMAKE_PROJECT_NAME}TestTests exqudens_test_tests_test_1)
+add_test(exqudens_test_tests_test_2 ${CMAKE_PROJECT_NAME}TestTests exqudens_test_tests_test_2)
 
 add_test(exqudens_test_strings_test_1 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_strings_test_1)
 add_test(exqudens_test_strings_test_2 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_strings_test_2)
