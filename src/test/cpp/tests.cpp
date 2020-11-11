@@ -1,4 +1,4 @@
-#include "../../main/cpp/exqudens/tests.hpp"
+#include "exqudens/tests.hpp"
 #include "exqudens/strings/test_strings.hpp"
 
 using std::string;

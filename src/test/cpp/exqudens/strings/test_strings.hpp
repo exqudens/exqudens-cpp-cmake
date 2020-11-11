@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../../../../main/cpp/exqudens/strings.hpp"
-#include "../../../../main/cpp/exqudens/assertions.hpp"
+#include "exqudens/strings.hpp"
+#include "exqudens/assertions.hpp"
 
 namespace exqudens::test_strings {
 

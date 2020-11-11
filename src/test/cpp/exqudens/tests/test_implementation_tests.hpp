@@ -1,4 +1,4 @@
-#include "../../../../main/cpp/exqudens/tests.hpp"
+#include "exqudens/tests.hpp"
 
 namespace exqudens::test_tests {
   int run_args_executed = 0;

@@ -1,7 +1,7 @@
 #ifndef TEST_ASSERTIONS_HPP
 #define TEST_ASSERTIONS_HPP
 
-#include "../../../../main/cpp/exqudens/assertions.hpp"
+#include "exqudens/assertions.hpp"
 
 namespace exqudens::test_assertions {
 

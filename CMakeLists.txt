@@ -38,6 +38,9 @@ set(CMAKE_CXX_STANDARD 20)
 
 #--------------------------
 
+include_directories(src/main/cpp)
+include_directories(src/test/cpp)
+
 set(
         SOURCE_FILES
         src/main/cpp/exqudens/tests.hpp
