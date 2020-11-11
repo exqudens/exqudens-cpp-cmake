@@ -1,5 +1,5 @@
-#ifndef ASSERTIONS_HPP
-#define ASSERTIONS_HPP
+#ifndef EXQUDENS_ASSERTIONS_HPP
+#define EXQUDENS_ASSERTIONS_HPP
 
 #include <string>
 #include <stdexcept>
@@ -21,10 +21,10 @@ namespace exqudens {
           expected,
           actual,
           string("'string1' not equal 'string2' expected: '")
-            .append(expected)
-            .append("' actual: '")
-            .append(actual)
-            .append("'")
+              .append(expected)
+              .append("' actual: '")
+              .append(actual)
+              .append("'")
       );
     }
 
@@ -80,4 +80,4 @@ namespace exqudens {
 
 }
 
-#endif // ASSERTIONS_HPP
+#endif // EXQUDENS_ASSERTIONS_HPP

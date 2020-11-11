@@ -14,6 +14,7 @@ using std::cout;
 using std::endl;
 
 void exqudens_test_tests_test_1();
+
 void exqudens_test_tests_test_2();
 
 int main(int argc, char* argv[]) {
@@ -51,7 +52,7 @@ void exqudens_test_tests_test_1() {
   if (
       exqudens::test_tests::run_args_executed == 0
       && exqudens::test_tests::run_executed == 0
-    ) {
+      ) {
 
     string names[2] = {"tests", "exqudens_test_tests_run_args"};
     ostringstream out;
@@ -62,7 +63,7 @@ void exqudens_test_tests_test_1() {
     if (
         exqudens::test_tests::run_args_executed == 1
         && exqudens::test_tests::run_executed == 0
-    ) {
+        ) {
       return;
     }
 
@@ -93,7 +94,7 @@ void exqudens_test_tests_test_2() {
   if (
       exqudens::test_tests::run_args_executed == 0
       && exqudens::test_tests::run_executed == 0
-  ) {
+      ) {
 
     ostringstream out;
     ostringstream error_out;
@@ -103,7 +104,7 @@ void exqudens_test_tests_test_2() {
     if (
         exqudens::test_tests::run_args_executed == 1
         && exqudens::test_tests::run_executed == 1
-    ) {
+        ) {
       return;
     }
 

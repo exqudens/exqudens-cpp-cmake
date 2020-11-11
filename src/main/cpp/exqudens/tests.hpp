@@ -18,7 +18,7 @@ namespace exqudens {
   class tests {
 
     public:
-    typedef void (*test)();
+    typedef void (* test)();
 
     public:
     static map<string, test> test_map();
@@ -83,7 +83,7 @@ namespace exqudens {
       string array[argc];
 
       int i = 1;
-      for (auto& [key, val] : map1) {
+      for (auto&[key, val] : map1) {
         array[i] = key;
         i++;
       }
