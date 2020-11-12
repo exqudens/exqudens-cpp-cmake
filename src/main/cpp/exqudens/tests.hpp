@@ -34,13 +34,22 @@ namespace exqudens {
 
       int result = 0;
 
-      for (int i = 1; i < argc; i++) {
-        string key = argv[i];
-        if (map1.contains(key)) {
-          test val = map1[key];
+      if (argc < 2) {
+        for (auto&[key, val] : map1) {
           int tmp_result = run_test(key, val, out, error_out);
           if (result == 0 && tmp_result != 0) {
             result = tmp_result;
+          }
+        }
+      } else {
+        for (int i = 1; i < argc; i++) {
+          string key = argv[i];
+          if (map1.contains(key)) {
+            test val = map1[key];
+            int tmp_result = run_test(key, val, out, error_out);
+            if (result == 0 && tmp_result != 0) {
+              result = tmp_result;
+            }
           }
         }
       }
@@ -81,6 +90,7 @@ namespace exqudens {
 
       int argc = map1.size() + 1;
       string array[argc];
+      array[0] = "";
 
       int i = 1;
       for (auto&[key, val] : map1) {
