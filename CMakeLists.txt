@@ -44,6 +44,7 @@ include_directories(src/test/cpp)
 set(
         SOURCE_FILES
         src/main/cpp/exqudens/tests.hpp
+        src/main/cpp/exqudens/logger.hpp
         src/main/cpp/exqudens/assertions.hpp
         src/main/cpp/exqudens/strings.hpp
 )
@@ -51,7 +52,7 @@ set(
 set(
         TEST_FILES
         ${SOURCE_FILES}
-        src/test/cpp/tests.cpp
+        src/test/cpp/exqudens/logger/test_logger.hpp
         src/test/cpp/exqudens/assertions/test_assertions.hpp
         src/test/cpp/exqudens/strings/test_strings.hpp
 )
@@ -68,11 +69,14 @@ add_executable(
 add_executable(
         ${CMAKE_PROJECT_NAME}RunTests
         ${TEST_FILES}
-        src/test/cpp/run_tests.cpp
+        src/test/cpp/exqudens/run_tests.cpp
 )
 
 add_test(exqudens_test_tests_test_1 ${CMAKE_PROJECT_NAME}TestTests exqudens_test_tests_test_1)
 add_test(exqudens_test_tests_test_2 ${CMAKE_PROJECT_NAME}TestTests exqudens_test_tests_test_2)
+
+add_test(exqudens_test_logger_test_1 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_logger_test_1)
+add_test(exqudens_test_logger_test_2 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_logger_test_2)
 
 add_test(exqudens_test_strings_test_1 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_strings_test_1)
 add_test(exqudens_test_strings_test_2 ${CMAKE_PROJECT_NAME}RunTests exqudens_test_strings_test_2)
