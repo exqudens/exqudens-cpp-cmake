@@ -57,6 +57,12 @@ set(
         src/test/cpp/exqudens/strings/test_strings.hpp
 )
 
+add_executable(
+        ${CMAKE_PROJECT_NAME}TestMyMacro
+        src/main/cpp/other/my_macro.hpp
+        src/test/cpp/other/test_my_macro.cpp
+)
+
 enable_testing()
 
 add_executable(
