@@ -63,10 +63,16 @@ add_executable(
         src/test/cpp/other/test_my_macro.cpp
 )
 
+add_executable(
+        ${CMAKE_PROJECT_NAME}TestTests
+        src/main/cpp/other/tests.hpp
+        src/test/cpp/other/test_tests.cpp
+)
+
 enable_testing()
 
 add_executable(
-        ${CMAKE_PROJECT_NAME}TestTests
+        ${CMAKE_PROJECT_NAME}TestOldTests
         ${SOURCE_FILES}
         src/test/cpp/exqudens/tests/test_implementation_tests.hpp
         src/test/cpp/exqudens/tests/test_tests.cpp
