@@ -42,6 +42,17 @@ include_directories(src/main/cpp)
 include_directories(src/test/cpp)
 
 set(
+        EXQUDENS_TEST_SOURCES
+        src/main/cpp/exqudens/test/test.hpp
+        src/main/cpp/exqudens/test/tests.hpp
+        src/main/cpp/exqudens/test/tests.cpp
+)
+
+foreach(F ${EXQUDENS_TEST_SOURCES})
+    message(STATUS "file: ${F}")
+endforeach()
+
+set(
         SOURCE_FILES
         src/main/cpp/exqudens/tests.hpp
         src/main/cpp/exqudens/logger.hpp
@@ -70,6 +81,18 @@ add_executable(
 )
 
 enable_testing()
+
+add_library(
+        tests
+        src/main/cpp/exqudens/test/test.hpp
+        src/main/cpp/exqudens/test/tests.hpp
+        src/main/cpp/exqudens/test/tests.cpp
+)
+add_executable(
+        ${CMAKE_PROJECT_NAME}TestTest
+        src/test/cpp/exqudens/test/test_test.cpp
+)
+target_link_libraries(${CMAKE_PROJECT_NAME}TestTest PUBLIC tests)
 
 add_executable(
         ${CMAKE_PROJECT_NAME}TestOldTests

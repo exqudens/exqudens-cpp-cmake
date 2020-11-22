@@ -14,5 +14,5 @@ EXQUDENS_TEST(test_2) {
 }
 
 int main(int argc, char* argv[]) {
-  return exqudens::tests::run(argc, argv);
+  return other::tests::run(argc, argv);
 }
